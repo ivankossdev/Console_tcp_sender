@@ -1,0 +1,6 @@
+C:\Users\admin\source\repos\Cons\Cons\bin\Debug\Cons.exe.config
+C:\Users\admin\source\repos\Cons\Cons\bin\Debug\Cons.exe
+C:\Users\admin\source\repos\Cons\Cons\bin\Debug\Cons.pdb
+C:\Users\admin\source\repos\Cons\Cons\obj\Debug\Cons.csproj.CoreCompileInputs.cache
+C:\Users\admin\source\repos\Cons\Cons\obj\Debug\Cons.exe
+C:\Users\admin\source\repos\Cons\Cons\obj\Debug\Cons.pdb
