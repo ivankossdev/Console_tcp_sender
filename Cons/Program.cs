@@ -30,13 +30,13 @@ namespace Cons
 
                 //string text = "Р—Р°РєР°Р· Р·РІРѕРЅРєР° С‚РµС…РЅРёС‡РµСЃРєРѕР№ РїРѕРґРґРµСЂР¶РєРё";
                 
-                Encoding utf8 = Encoding.GetEncoding("Windows-1251");
-                Encoding win1251 = Encoding.GetEncoding("cp866");
+                //Encoding utf8 = Encoding.GetEncoding("Windows-1251");
+                //Encoding win1251 = Encoding.GetEncoding("cp866");
 
-                byte[] utf8Bytes = win1251.GetBytes(message);
-                byte[] win1251Bytes = Encoding.Convert(utf8, win1251, utf8Bytes);
+                //byte[] utf8Bytes = win1251.GetBytes(message);
+                //byte[] win1251Bytes = Encoding.Convert(utf8, win1251, utf8Bytes);
                 
-                Console.WriteLine(win1251.GetString(win1251Bytes));
+                //Console.WriteLine(win1251.GetString(win1251Bytes));
                 //Console.WriteLine(text);
 
                 //Console.ReadLine();
@@ -46,7 +46,7 @@ namespace Cons
                     TcpClient client = new TcpClient();
                     client.Connect(server, port);
 
-                    byte[] data = System.Text.Encoding.ASCII.GetBytes(win1251.GetString(win1251Bytes));
+                    byte[] data = Encoding.UTF8.GetBytes(message);
                     
 
                     StringBuilder response = new StringBuilder();
