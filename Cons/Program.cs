@@ -21,6 +21,12 @@ namespace Cons
                 "192.168.0.221",
                 "192.168.0.204"
             };
+            
+            foreach (string line in System.IO.File.ReadLines(@"/Users/ivankostuhin/Projects/Thread_and_open/Thread_and_open/addreses.txt"))
+            {
+                ipAdd.Add(line);
+            }
+            
             List<object> threadMessage = new List<object>();
 
             if (args.Length == 0)
@@ -74,6 +80,28 @@ namespace Cons
             }
 
             Console.WriteLine("Запрос завершен...");
+        }
+        
+        static void ip(List<string> ipAddress)
+        {
+            List<string> info = new List<string>()
+            {
+                "hello ",
+                "red ",
+                "led"
+            };
+
+            String message = "";
+
+            foreach (string s in info)
+            {
+                message += $"{s} ";
+            }
+
+            foreach (string ip in ipAddress)
+            {
+                new Thread(() => Console.WriteLine($"Send to {10500} : {ip} {message}")).Start();
+            }
         }
     }
 }
