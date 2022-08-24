@@ -16,9 +16,34 @@ namespace Cons
             String message = "";
             List<string> ipAddress = new List<string>();
 
+            try
+            {
+                foreach (string line in System.IO.File.ReadLines(@"C:\Program Files\Inner Range\addreses.txt"))
+                {
+                    ipAddress.Add(line);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception: {0}", e.Message);
+            }
+
             if (args.Length == 0)
             {
                 Console.WriteLine("Нет аргументов");
+                try
+                {
+                    foreach (string line in System.IO.File.ReadLines(@"C:\Program Files\Inner Range\addreses.txt"))
+                    {
+                        ipAddress.Add(line);
+                        Console.WriteLine(line);
+                    }
+                    Console.ReadLine();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Exception: {0}", e.Message);
+                }
             }
             else
             {
@@ -27,21 +52,9 @@ namespace Cons
                     message += $"{s} ";
                 }
 
-                try
+                foreach (string ip in ipAddress)
                 {
-                    foreach (string line in System.IO.File.ReadLines(@"addreses.txt"))
-                    {
-                        ipAddress.Add(line);
-                    }
-
-                    foreach (string ip in ipAddress)
-                    {
-                        new Thread(() => send(10500, ip, message)).Start();
-                    }
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine("Exception: {0}", e.Message);
+                    new Thread(() => send(10500, ip, message)).Start();
                 }
 
             }
