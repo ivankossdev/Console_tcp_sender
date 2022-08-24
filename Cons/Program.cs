@@ -14,25 +14,11 @@ namespace Cons
         {
             
             String message = "";
-            Console.WriteLine("Программа печатает входыне аргументы");
-            List<string> ipAddress = new List<string>()
-            {
-                "192.168.0.173",
-                "192.168.0.221",
-                "192.168.0.204"
-            };
-            
-            foreach (string line in System.IO.File.ReadLines(@"/Users/ivankostuhin/Projects/Thread_and_open/Thread_and_open/addreses.txt"))
-            {
-                ipAdd.Add(line);
-            }
-            
-            List<object> threadMessage = new List<object>();
+            List<string> ipAddress = new List<string>();
 
             if (args.Length == 0)
             {
                 Console.WriteLine("Нет аргументов");
-
             }
             else
             {
@@ -41,10 +27,23 @@ namespace Cons
                     message += $"{s} ";
                 }
 
-                foreach(string ip in ipAddress)
+                try
                 {
-                    send(10500, ip, message);
+                    foreach (string line in System.IO.File.ReadLines(@"addreses.txt"))
+                    {
+                        ipAddress.Add(line);
+                    }
+
+                    foreach (string ip in ipAddress)
+                    {
+                        new Thread(() => send(10500, ip, message)).Start();
+                    }
                 }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Exception: {0}", e.Message);
+                }
+
             }
         }
  
@@ -80,28 +79,6 @@ namespace Cons
             }
 
             Console.WriteLine("Запрос завершен...");
-        }
-        
-        static void ip(List<string> ipAddress)
-        {
-            List<string> info = new List<string>()
-            {
-                "hello ",
-                "red ",
-                "led"
-            };
-
-            String message = "";
-
-            foreach (string s in info)
-            {
-                message += $"{s} ";
-            }
-
-            foreach (string ip in ipAddress)
-            {
-                new Thread(() => Console.WriteLine($"Send to {10500} : {ip} {message}")).Start();
-            }
         }
     }
 }
