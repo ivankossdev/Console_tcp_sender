@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Net.Sockets;
+using System.IO;
 
 namespace Cons
 {
@@ -18,7 +19,7 @@ namespace Cons
 
             try
             {
-                foreach (string line in System.IO.File.ReadLines(@"C:\Program Files\Inner Range\addreses.txt"))
+                foreach (string line in System.IO.File.ReadLines(Directory.GetCurrentDirectory() + "\\addreses.txt"))
                 {
                     ipAddress.Add(line);
                 }
@@ -33,7 +34,7 @@ namespace Cons
                 Console.WriteLine("Нет аргументов");
                 try
                 {
-                    foreach (string line in System.IO.File.ReadLines(@"C:\Program Files\Inner Range\addreses.txt"))
+                    foreach (string line in System.IO.File.ReadLines(Directory.GetCurrentDirectory() + "\\addreses.txt"))
                     {
                         ipAddress.Add(line);
                         Console.WriteLine(line);

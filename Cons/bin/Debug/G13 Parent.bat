@@ -1,0 +1,1 @@
+START c:\Users\RR\source\repos\Console_tcp_sender\Cons\bin\Debug\Cons.exe "22" "августа" "2022" "г." "11:41:44" "Разрешено" "Родители" "13" "КПП_1_Въезд_1" "U2"
