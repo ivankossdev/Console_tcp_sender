@@ -13,20 +13,20 @@ namespace Cons
     {
         static void Main(string[] args)
         {
-            
-            String message = "";
+
+            String message = string.Empty;
             List<string> ipAddress = new List<string>();
 
             try
             {
-                foreach (string line in System.IO.File.ReadLines(Directory.GetCurrentDirectory() + "\\addreses.txt"))
+                foreach (string line in File.ReadLines(Directory.GetCurrentDirectory() + "\\addreses.txt"))
                 {
                     ipAddress.Add(line);
                 }
             }
             catch (Exception e)
             {
-                Console.WriteLine("Exception: {0}", e.Message);
+                Console.WriteLine($"Exception: {e.Message}");
             }
 
             if (args.Length == 0)
@@ -34,16 +34,16 @@ namespace Cons
                 Console.WriteLine("Нет аргументов");
                 try
                 {
-                    foreach (string line in System.IO.File.ReadLines(Directory.GetCurrentDirectory() + "\\addreses.txt"))
+                    foreach (string line in File.ReadLines(Directory.GetCurrentDirectory() + "\\addreses.txt"))
                     {
                         ipAddress.Add(line);
                         Console.WriteLine(line);
                     }
-                    Console.ReadLine();
+                    Console.ReadKey();
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine("Exception: {0}", e.Message);
+                    Console.WriteLine($"Exception: {e.Message}");
                 }
             }
             else
@@ -76,7 +76,7 @@ namespace Cons
 
                 stream.Write(data, 0, data.Length);
 
-                Console.WriteLine("Sent: {0}", message);
+                Console.WriteLine($"Sent: {message}");
 
                 Console.WriteLine(response.ToString());
 
@@ -85,11 +85,11 @@ namespace Cons
             }
             catch (SocketException e)
             {
-                Console.WriteLine("SocketException: {0}", e);
+                Console.WriteLine($"SocketException: {e}");
             }
             catch (Exception e)
             {
-                Console.WriteLine("Exception: {0}", e.Message);
+                Console.WriteLine($"Exception: {e.Message}");
             }
 
             Console.WriteLine("Запрос завершен...");
